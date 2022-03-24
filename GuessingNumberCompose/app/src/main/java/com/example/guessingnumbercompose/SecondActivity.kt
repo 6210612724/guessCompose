@@ -1,5 +1,5 @@
-package com.example.guessingnumbercompose.ui.theme
-
+package com.example.guessingnumbercompose
+import android.R.attr.data
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,13 +12,10 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
-import com.example.guessingnumbercompose.MainActivity
 import com.example.guessingnumbercompose.ui.theme.ui.theme.GuessingNumberComposeTheme
+
 
 class SecondActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,41 +30,44 @@ class SecondActivity : ComponentActivity() {
         }
     }
 
-    @Preview(showBackground = true)
+    //@Preview(showBackground = true)
     @Composable
     fun result() {
         var intro = "Correct"
-        var  scaffoldState = rememberScaffoldState()
+        var scaffoldState = rememberScaffoldState()
 
-        val intent = Intent(this, MainActivity::class.java)
-        val setTime:String = intent.getStringExtra("keyname").toString()
-
-
+        val data = intent.extras
+        val setTime = data!!.getString("times")
+        val mainIntent = Intent(this, MainActivity::class.java)
+        //val setTime: String = intent.getStringExtra("times").toString()
 
 
         Scaffold(
             modifier = Modifier.fillMaxSize(),
             scaffoldState = scaffoldState
         ) {
-            Column(modifier = Modifier
-                .fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center)
-            {   Text(
-                text = intro,
-                fontSize = 50.sp,
+            Column(
                 modifier = Modifier
-                    .padding(50.dp)
+                    .fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
             )
+            {
+                Text(
+                    text = intro,
+                    fontSize = 50.sp,
+                    modifier = Modifier
+                        .padding(50.dp)
+                )
 
                 Text(
                     text = "try $setTime",
                     fontSize = 20.sp,
 
-                )
+                    )
 
                 Button(onClick = {
-                    startActivity(intent)
+                    startActivity(mainIntent)
 
                 }) {
                     Text("Play again")
@@ -75,12 +75,10 @@ class SecondActivity : ComponentActivity() {
 
 
 
-
-
-
-
-
+            }
+        }
     }
 }
+
 
 

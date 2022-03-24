@@ -2,7 +2,6 @@ package com.example.guessingnumbercompose
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.EditText
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
@@ -13,7 +12,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.guessingnumbercompose.ui.theme.GuessingNumberComposeTheme
 import androidx.compose.ui.unit.sp
@@ -21,7 +19,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.example.guessingnumbercompose.ui.theme.SecondActivity
 
 
 class MainActivity : ComponentActivity() {
@@ -44,13 +41,13 @@ class MainActivity : ComponentActivity() {
 
 
 
-
+    var time = 0
     @Preview(showBackground = true)
     @Composable
     fun playgame() {
 
         var ran = 5
-        var time = 5
+
         var hints = ""
         var intro = "I'm thinking of from 1-1000 try to gruess the number"
 
@@ -63,19 +60,21 @@ class MainActivity : ComponentActivity() {
             var checkInput = Integer.parseInt(textFiledState.toString())
 
             if (checkInput < ran){
-                time += 1
+                time++
                 hints= "Hints: Try higher"
 
 
             }
             if (checkInput > ran){
-                hints = time.toString()
-                time += time
+                time++
+                hints = "Hints: Try lower"
+
             }
 
             if(checkInput == ran){
+                var resultTime = time.toString()
                 val intent = Intent(this, SecondActivity::class.java)
-                intent.putExtra("keyname", time.toString())
+                intent.putExtra("times", resultTime.toString())
                 startActivity(intent)
             }
         }

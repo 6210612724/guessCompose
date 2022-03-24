@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GuessingNumberCompose">
         <activity
-            android:name=".ui.theme.SecondActivity"
+            android:name=".SecondActivity"
             android:exported="false"
             android:label="@string/title_activity_second"
             android:theme="@style/Theme.GuessingNumberCompose.NoActionBar" />
