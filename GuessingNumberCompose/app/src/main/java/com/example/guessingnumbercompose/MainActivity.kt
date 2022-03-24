@@ -19,6 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import java.util.*
 
 
 class MainActivity : ComponentActivity() {
@@ -42,11 +43,12 @@ class MainActivity : ComponentActivity() {
 
 
     var time = 0
+    val r = Random()
+    var ran = r.nextInt(1000)
+
     @Preview(showBackground = true)
     @Composable
     fun playgame() {
-
-        var ran = 5
 
         var hints = ""
         var intro = "I'm thinking of from 1-1000 try to gruess the number"
