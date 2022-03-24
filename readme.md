@@ -1,4 +1,4 @@
-# CN333 Assignment 1 : Number Guessing Game
+# CN333 Assignment 3 : Number Guessing Game with Jackpack Compose
 เป็นเกมที่จะสุ่มเลข 1 - 1000 ให้ผู้ใช้ลองคาดเดาเลขและเมื่อผู้ใช้คาดเดาเลขถูกต้อง เกมจะบอกจำนวนครั้งทั้งหมดที่ผู้ใช้ได้ทำการคาดเดาเลข
 
 ## ภายในเกม
